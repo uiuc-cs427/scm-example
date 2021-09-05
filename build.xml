@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="scm-example">
+    <property environment="env"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="scm-example.classpath">
+        <pathelement location="target/test-classes"/>
+        <pathelement location="target/classes"/>
+        <pathelement location="ant-libs/junit-4.8.1.jar"/>
+    </path> 
+    <target name="clean">
+        <delete dir="target/test-classes"/>
+        <delete dir="target/classes"/>
+    </target>
+    <target name="compile">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <mkdir dir="target/test-classes"/>
+        <mkdir dir="target/classes"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <include name="**/*.java"/>
+            <classpath refid="scm-example.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <include name="**/*.java"/>
+            <classpath refid="scm-example.classpath"/>
+        </javac>
+    </target>
+    <target name="test" depends="compile">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="edu.illinois.cs427.example.MainTest" todir="${junit.output.dir}"/>
+            <jvmarg line="-ea"/>
+            <classpath refid="scm-example.classpath"/>
+        </junit>
+    </target>
+</project>
