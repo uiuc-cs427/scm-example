@@ -6,7 +6,7 @@ Build file: `build.xml`
 
 To compile the project:
 ```
-ant compile
+ant build
 ```
 Compilation output dir: `target`
 

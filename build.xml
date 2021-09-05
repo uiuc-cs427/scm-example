@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- WARNING: Eclipse auto-generated file.
-              Any modifications will be overwritten.
-              To include a user specific buildfile here, simply create one in the same
-              directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. -->
 <project basedir="." default="build" name="scm-example">
     <property environment="env"/>
     <property name="junit.output.dir" value="junit"/>
@@ -19,7 +14,7 @@
         <delete dir="target/test-classes"/>
         <delete dir="target/classes"/>
     </target>
-    <target name="compile">
+    <target name="build">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <mkdir dir="target/test-classes"/>
         <mkdir dir="target/classes"/>
@@ -34,7 +29,7 @@
             <classpath refid="scm-example.classpath"/>
         </javac>
     </target>
-    <target name="test" depends="compile">
+    <target name="test" depends="build">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
