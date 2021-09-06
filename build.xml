@@ -16,20 +16,22 @@
     </target>
     <target name="build">
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <mkdir dir="target/test-classes"/>
         <mkdir dir="target/classes"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
             <src path="src/main/java"/>
             <include name="**/*.java"/>
             <classpath refid="scm-example.classpath"/>
         </javac>
+    </target>
+    <target name="build-test" depends="build">
+        <mkdir dir="target/test-classes"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
             <src path="src/test/java"/>
             <include name="**/*.java"/>
             <classpath refid="scm-example.classpath"/>
         </javac>
     </target>
-    <target name="test" depends="build">
+    <target name="test" depends="build-test">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
