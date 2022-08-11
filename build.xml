@@ -23,7 +23,7 @@
     <target name="build">
         <echo message="${ant.project.name}: ${ant.file}"/>
         <mkdir dir="target/classes"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}" encoding="UTF-8">
             <src path="src/main/java"/>
             <include name="**/*.java"/>
             <classpath refid="scm-example.classpath"/>
@@ -34,7 +34,7 @@
     -->
     <target name="build-test" depends="build">
         <mkdir dir="target/test-classes"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}" encoding="UTF-8">
             <src path="src/test/java"/>
             <include name="**/*.java"/>
             <classpath refid="scm-example.classpath"/>
